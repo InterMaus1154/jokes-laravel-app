@@ -141,3 +141,22 @@ table th, table td{
     color: var(--success-green);
 }
 
+.tag-wrapper{
+    display: grid;
+    gap: 1rem;
+
+    label{
+        font-weight: bold;
+    }
+}
+
+.tag-wrapper .tags-holder{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.tag-wrapper .tag-input-holder{
+    display: flex;
+    gap: .25rem;
+}

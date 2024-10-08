@@ -5,7 +5,7 @@
             <h2 class="form-title">Create New Joke</h2>
             <x-response.error />
             <x-response.success />
-            <form method="POST" action="{{}}">
+            <form method="POST" action="">
                 @csrf
                 @method('POST')
                 <div class="input-wrapper">
@@ -19,6 +19,18 @@
                 <div class="input-wrapper">
                     <label for="is_adult">Is the joke 18+?(will be evaluated)</label>
                     <input type="checkbox" id="is_adult" name="is_adult"/>
+                </div>
+                {{--available tags--}}
+                <div class="tag-wrapper">
+                    <label>Tag(category):</label>
+                    <div class="tags-holder">
+                        @foreach($tags as $tag)
+                            <div class="tag-input-holder">
+                                <label class="joke-tag" for="{{$tag->tag_name}}" style="--tag-bg: {{$tag->tag_color}}" >{{$tag->tag_name}}</label>
+                                <input type="checkbox" name="tags[]" id="{{$tag->tag_name}}" value="{{$tag->tag_id}}">
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 <input type="submit" value="Create Joke" class="submit-button">
             </form>

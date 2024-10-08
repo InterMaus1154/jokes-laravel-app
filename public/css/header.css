@@ -3,6 +3,7 @@ header{
     background-color: var(--bg-dark);
     color: var(--white);
     font-size: 1.125rem;
+    z-index: 1000;
 }
 
 header h1 a{
