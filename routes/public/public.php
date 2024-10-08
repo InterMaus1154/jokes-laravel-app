@@ -25,4 +25,4 @@ Route::post('register', [AuthController::class, 'register'])->name('user.auth.re
 Route::get('/profile/{user}', [PublicUserController::class, 'show'])->name('public.view.profile');
 
 /*Joke detail page*/
-Route::get('/joke/{joke}', [PublicJokeController::class, 'show'])->name('public.view.joke');
+Route::get('/joke/view/{joke}', [PublicJokeController::class, 'show'])->name('public.view.joke');

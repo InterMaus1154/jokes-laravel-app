@@ -52,6 +52,7 @@
 
 .input-wrapper label{
     position: relative;
+    font-weight: bold;
 }
 
 .input-wrapper input{
@@ -62,11 +63,11 @@
     border: 2px solid var(--txt-light);
 }
 
-.input-wrapper input:valid{
+.input-wrapper input:not(input[type="checkbox"]):valid{
     outline: 3px solid var(--success-green, green);
 }
 
-.input-wrapper input:user-invalid{
+.input-wrapper input:not(input[type="checkbox"]):user-invalid{
     outline: 3px solid var(--error-red, red);
 }
 

@@ -17,7 +17,7 @@
                         <a href="{{route('public.view.profile', ['user' => auth()->user()])}}">Profile</a>
                     </li>
                     <li>
-                        <a href="#">Create Joke</a>
+                        <a href="{{route('user.joke.create')}}">Create Joke</a>
                     </li>
                 @endauth
                 @guest

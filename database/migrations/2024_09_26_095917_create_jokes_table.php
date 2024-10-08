@@ -16,7 +16,7 @@ return new class extends Migration
             /*joke author*/
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('user_id')->on('users')->cascadeOnDelete();
-            $table->string('joke_slug', 100)->unique();
+            $table->string('joke_slug', 500)->unique();
             $table->string('joke_question', 500);
             $table->string('joke_answer', 500);
             $table->boolean('is_active')->default(true);
