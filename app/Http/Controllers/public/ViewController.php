@@ -4,6 +4,7 @@ namespace App\Http\Controllers\public;
 
 use App\Http\Controllers\Controller;
 use App\Models\Joke;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 /**
@@ -26,11 +27,17 @@ class ViewController extends Controller
                         $builder->whereTagId($request->get('tag'));
                     });
                 })
+                ->when($request->has('joke_tags'), function($query)use($request){
+                    $query->whereHas('jokeTags', function($builder)use($request){
+                       $builder->whereIn('tag_id', $request->get('joke_tags'));
+                    });
+                })
                 ->orderBy('created_at', 'desc')
                 ->paginate(Joke::$PAGINATION_COUNT);
 
+        $tags = Tag::all('tag_id', 'tag_name', 'tag_color');
 
-        return view('public.index', compact('jokes'));
+        return view('public.index', compact('jokes', 'tags'));
     }
 
     /**

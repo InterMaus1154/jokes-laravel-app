@@ -4,8 +4,8 @@
 {{--login is not required--}}
 {{-----------}}
 <x-general.layout title="LaughLab - Home">
-    <x-response.error />
-    <x-response.success />
+    <x-response.error/>
+    <x-response.success/>
     <section class="page-section page-padding public-section">
         <div class="section-header">
             <p class="bold">Total Jokes: {{$jokes->count()}}</p>
@@ -17,11 +17,25 @@
                 <h3>Filter Jokes</h3>
                 <div>
                     <form action="{{route('public.index')}}" method="GET">
-                        <input type="submit" value="Filter" class="em-button"
-                        >
+                        <div class="tag-wrapper">
+                            <label>Tag(category):</label>
+                            <div class="tags-holder">
+                                @foreach($tags as $tag)
+                                    <div class="tag-input-holder">
+                                        <label class="joke-tag" for="{{$tag->tag_name}}"
+                                               style="--tag-bg: {{$tag->tag_color}}">{{$tag->tag_name}}</label>
+                                        <input type="checkbox" name="joke_tags[]" id="{{$tag->tag_name}}"
+                                               value="{{$tag->tag_id}}"
+                                            {{in_array($tag->tag_id, request()->get('joke_tags', [])) ? "checked" : ""}}
+                                            {{request()->get('tag', '') == $tag->tag_id ? "checked" : ""}}
+                                        >
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <input type="submit" value="Filter" class="em-button">
                     </form>
                 </div>
-
             </aside>
             <div class="jokes-section">
                 {{--display jokes--}}

@@ -18,10 +18,7 @@
 }
 
 .public-section .filter-box{
-    position: sticky;
-    left: 0;
-    right: 0;
-    top: 50%;
+
     height: min-content;
 
     padding: 1rem;
