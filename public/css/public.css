@@ -71,6 +71,11 @@
     gap: .5rem;
 }
 
+.joke-box-actions{
+    display: flex;
+    gap: .5rem;
+}
+
 .tags{
     display: flex;
     gap: .5rem;

@@ -27,6 +27,7 @@ class JokeController extends Controller
 
     /**
      * Store new joke
+     * user.joke.store
      */
     public function store(StoreJokeRequest $request)
     {
@@ -65,5 +66,25 @@ class JokeController extends Controller
 
             return redirect()->back()->with('success', 'New joke created successfully!');
         }
+
+        return redirect()->back()->withErrors(['error' => 'Error at creating new joke!']);
+    }
+
+    /**
+     * Show edit form
+     * user.joke.edit
+     */
+    public function edit(Joke $joke)
+    {
+        $this->authorize('update', [Joke::class, $joke]);
+        return view('joke.update-joke-form', compact('joke'));
+    }
+
+    /**
+     * Update joke
+     */
+    public function update(Joke $joke)
+    {
+
     }
 }

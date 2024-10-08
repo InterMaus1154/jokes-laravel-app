@@ -13,6 +13,11 @@ Route::prefix('joke')
         /*Store new joke*/
         Route::post('store', 'store')->name('user.joke.store');
 
+        /*Show update joke form*/
+        Route::get('edit/{joke}', 'edit')->name('user.joke.edit');
+
+        /*Update joke*/
+        Route::put('update/{joke}', 'update')->name('user.joke.update');
     });
 
 /*Tag prefixed routes, with tag controller*/
