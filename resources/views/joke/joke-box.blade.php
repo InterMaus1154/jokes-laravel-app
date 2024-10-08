@@ -6,6 +6,9 @@
             @can('update', [\App\Models\Joke::class, $joke])
                 <a href="{{route('user.joke.edit', compact('joke'))}}" class="em-button">Edit Joke</a>
             @endcan
+            @can('delete', [\App\Models\Joke::class, $joke])
+                <a href="" class="em-button">Remove Joke</a>
+            @endcan
         </div>
         <span>Joke posted by
             <a href="{{route('public.view.profile', ['user' => $joke->user])}}"
