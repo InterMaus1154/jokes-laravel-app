@@ -38,7 +38,7 @@ class JokePolicy
      */
     public function update(User $user, Joke $joke): bool
     {
-        return !$user->is_restricted && ($user->is_admin || $joke->user_id === $user->user_id);
+        return $joke->user_id === $user->user_id;
     }
 
     /**

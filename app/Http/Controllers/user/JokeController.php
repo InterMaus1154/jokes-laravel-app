@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreJokeRequest;
+use App\Http\Requests\UpdateJokeRequest;
 use App\Models\Joke;
 use App\Models\JokeTag;
 use App\Models\Tag;
@@ -83,8 +84,22 @@ class JokeController extends Controller
     /**
      * Update joke
      */
-    public function update(Joke $joke)
+    public function update(UpdateJokeRequest $request, Joke $joke)
     {
+        $this->authorize('update', [Joke::class, $joke]);
 
+        //attempt update
+        $isUpdated = $joke->update([
+            'joke_question' => $request->validated('joke_question'),
+            'joke_answer' => $request->validated('joke_answer'),
+            'is_adult' => $request->boolean('is_adult')
+        ]);
+
+        //check if updated successfully
+        if($isUpdated){
+            return redirect()->back()->with('success', 'Joke updated successfully!');
+        }
+
+        return redirect()->back()->withErrors(['error' => 'Error at updating joke!']);
     }
 }

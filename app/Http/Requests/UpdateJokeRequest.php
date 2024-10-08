@@ -11,7 +11,7 @@ class UpdateJokeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return !auth()->user()->is_restricted;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateJokeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'joke_question' => 'required|string|max:500',
+            'joke_answer' => 'required|string|max:500'
         ];
     }
 }

@@ -18,7 +18,7 @@
                 </div>
                 <div class="input-wrapper">
                     <label for="is_adult">Is the joke 18+?(will be evaluated)</label>
-                    <input type="checkbox" id="is_adult" name="is_adult" value="{{old('is_adult', false)}}"/>
+                    <input type="checkbox" id="is_adult" name="is_adult" value="1"/>
                 </div>
                 {{--available tags--}}
                 <div class="tag-wrapper">
