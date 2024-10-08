@@ -32,6 +32,15 @@ class ViewController extends Controller
                        $builder->whereIn('tag_id', $request->get('joke_tags'));
                     });
                 })
+                ->when($request->has('keywords'), function($query)use($request){
+                    $keywords =  explode('/', $request->get('keywords'));
+                    $query->where(function($query)use($keywords){
+                        foreach ($keywords as $keyword) {
+                            $query->orWhere('joke_question', 'LIKE', ' %'.$keyword.'%')
+                            ->orWhere('joke_answer', 'LIKE', '%'.$keyword.'%');
+                        }
+                    });
+                })
                 ->orderBy('created_at', 'desc')
                 ->paginate(Joke::$PAGINATION_COUNT);
 

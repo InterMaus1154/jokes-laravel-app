@@ -33,6 +33,10 @@
                                 @endforeach
                             </div>
                         </div>
+                        <div>
+                            <label for="keywords">Keywords:(separate by /)</label>
+                            <input type="text" name="keywords" id="keywords">
+                        </div>
                         <input type="submit" value="Filter" class="em-button">
                     </form>
                 </div>
