@@ -1,0 +1,142 @@
+
+.secret-form input[type="submit"]{
+    background: none;
+    color: inherit;
+    border: 0;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.secret-form input[type="submit"]:hover{
+    text-decoration: underline;
+}
+
+
+.page-section{
+    display: grid;
+    gap: 1rem;
+}
+
+.form-section{
+    display: flex;
+    justify-content: center;
+}
+
+.form-wrapper{
+    background-color: var(--white);
+    padding: 2rem 4rem;
+    border-radius: .25rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-wrapper > h2{
+    text-align: center;
+}
+
+.form-wrapper form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+}
+
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+
+    font-size: 1.125rem;
+}
+
+.input-wrapper label{
+    position: relative;
+}
+
+.input-wrapper input{
+    min-width: 20rem;
+    font-size: 1.05rem;
+    padding: .5rem .25rem;
+    border-radius: .25rem;
+    border: 2px solid var(--txt-light);
+}
+
+.input-wrapper input:valid{
+    outline: 3px solid var(--success-green, green);
+}
+
+.input-wrapper input:user-invalid{
+    outline: 3px solid var(--error-red, red);
+}
+
+.input-wrapper:has(input[required]) label::before{
+    content: '*';
+    position: absolute;
+    left: -2.5%;
+    width: 25px;
+    height: 25px;
+    color: var(--error-red, red);
+}
+
+.submit-button{
+    padding: .25rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+    background-color: var(--txt-dark);
+    color: var(--white);
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.submit-button:hover{
+    background-color: var(--white);
+    color: var(--txt-dark);
+    border-color: var(--txt-dark);
+}
+
+/*table styles*/
+table{
+    border-collapse: collapse;
+    overflow-x: scroll;
+    display: block;
+}
+
+table th, table td{
+    padding: 1.5rem 2rem;
+    border: 2px solid var(--txt-dark, #000);
+    text-align: center;
+}
+/**/
+
+/*page section header*/
+.page-section-header{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*pagination*/
+.pagination{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pagination li:has(a) a, .pagination li:has(span){
+    padding: 1rem;
+    border: 1px solid var(--txt-dark);
+    border-radius: .25rem;
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+.pagination .active{
+    color: var(--success-green);
+}
+

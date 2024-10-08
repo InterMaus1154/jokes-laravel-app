@@ -1,0 +1,4 @@
+{{--footer component--}}
+<footer>
+
+</footer>

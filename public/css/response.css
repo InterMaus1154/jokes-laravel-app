@@ -1,0 +1,28 @@
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    font-size: 1.75rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+main h1{
+    color: var(--txt-dark, #000);
+}
+
+.action-container a{
+    background-color: var(--txt-light);
+    color: var(--white);
+    padding: .65rem .75rem;
+    border-radius: .25rem;
+    text-decoration: none;
+}
+
+.action-container a:hover{
+    background-color: #1a202c;
+}

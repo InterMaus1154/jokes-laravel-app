@@ -1,0 +1,25 @@
+/*styles related to profile/details etc*/
+
+.profile-details{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 500px), 1fr));
+    gap: 1rem;
+}
+
+.profile-detail{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem;
+    border: 1px solid var(--txt-dark);
+    border-radius: .25rem;
+}
+
+.profile-detail .profile-detail-title{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.profile-detail .profile-detail-content{
+    font-weight: bold;
+}
