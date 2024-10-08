@@ -37,7 +37,7 @@ class JokeController extends Controller
 
         $jokeSlug = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', trim($jokeQuestion)));
 
-        $jokeSlug = $jokeSlug .'-'. now()->format('Y-m-d');
+        $jokeSlug = $jokeSlug .'-'. now()->format('Y-m-d').strtolower(\Str::random(8));
 
         //store new joke
         $joke = Joke::create([

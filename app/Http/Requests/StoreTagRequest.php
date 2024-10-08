@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Tag;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTagRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreTagRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->user()->can('create', Tag::class);
     }
 
     /**
@@ -22,7 +23,8 @@ class StoreTagRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tag_name' => 'required|string|max:20',
+            'tag_color' => 'required|string|max:8'
         ];
     }
 }

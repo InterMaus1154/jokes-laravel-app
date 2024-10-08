@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('user_id')->on('users')->cascadeOnDelete();
             $table->string('tag_name', 20);
-            $table->string('tag_color', 8);
+            $table->string('tag_color', 8)->default('#27272a');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

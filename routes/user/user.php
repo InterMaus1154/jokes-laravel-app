@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\user\JokeController as UserJokeController;
+use App\Http\Controllers\user\TagController as UserTagController;
 
 /*Joke prefixed routes, with joke controller*/
 Route::prefix('joke')
@@ -14,3 +15,13 @@ Route::prefix('joke')
 
     });
 
+/*Tag prefixed routes, with tag controller*/
+Route::prefix('tag')
+    ->controller(UserTagController::class)
+    ->group(function(){
+        /*Show create tag form*/
+        Route::get('create', 'create')->name('user.tag.create');
+
+        /*Store new tag*/
+        Route::post('store', 'store')->name('user.tag.store');
+    });

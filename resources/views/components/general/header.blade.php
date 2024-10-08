@@ -19,15 +19,18 @@
                     <li>
                         <a href="{{route('user.joke.create')}}">Create Joke</a>
                     </li>
+                    <li>
+                        <a href="{{route('user.tag.create')}}">Create Tag</a>
+                    </li>
                 @endauth
                 @guest
                     <li>
                         <a href="{{route('user.view.login')}}">Login</a>
                     </li>
+                    <li>
+                        <a href="{{route('user.view.register')}}">Register</a>
+                    </li>
                 @endguest
-                <li>
-                    <a href="{{route('user.view.register')}}">Register</a>
-                </li>
                 @auth
                     <li>
                         <form class="secret-form" method="POST" action="{{route('user.auth.logout')}}">
