@@ -40,6 +40,7 @@
                         <input type="submit" value="Filter" class="em-button">
                     </form>
                 </div>
+                <a href="{{route('public.index')}}" class="em-button">Clear filter</a>
             </aside>
             <div class="jokes-section">
                 {{--display jokes--}}
