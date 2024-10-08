@@ -9,19 +9,13 @@ use App\Models\Tag;
 
 class TagController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
+        $this->authorize('create', Tag::class);
         return view('tag.create-tag-form');
     }
 
@@ -31,6 +25,15 @@ class TagController extends Controller
     public function store(StoreTagRequest $request)
     {
         $this->authorize('create', Tag::class);
+
+        //attempt to create tag
+        $tag = Tag::create([
+            'user_id' => auth()->user()->user_id,
+            'tag_name' => $request->validated('tag_name'),
+            'tag_color' => $request->validated('tag_color')
+        ]);
+
+        return redirect()->back()->with('success', 'New tag created successfully!');
 
     }
 

@@ -20,7 +20,7 @@
             </form>
             <div class="tag-preview">
                 <p class="bold">Tag Preview: </p>
-                <span class="joke-tag" style="--tag-bg: #27272a">Test</span>
+                <span class="joke-tag" style="--tag-bg: #27272a"></span>
             </div>
         </div>
     </section>
