@@ -102,4 +102,15 @@ class JokeController extends Controller
 
         return redirect()->back()->withErrors(['error' => 'Error at updating joke!']);
     }
+
+    /**
+     * Remove joke
+     */
+    public function destroy(Joke $joke)
+    {
+        $this->authorize('delete', [Joke::class, $joke]);
+
+        $joke->delete();
+        return redirect()->route('public.index')->with('success', 'Joke removed successfully!');
+    }
 }

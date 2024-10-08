@@ -18,6 +18,9 @@ Route::prefix('joke')
 
         /*Update joke*/
         Route::put('update/{joke}', 'update')->name('user.joke.update');
+
+        /*Remove a joke*/
+        Route::delete('delete/{joke}', 'destroy')->name('user.joke.delete');
     });
 
 /*Tag prefixed routes, with tag controller*/

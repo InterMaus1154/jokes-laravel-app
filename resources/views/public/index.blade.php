@@ -4,6 +4,8 @@
 {{--login is not required--}}
 {{-----------}}
 <x-general.layout title="LaughLab - Home">
+    <x-response.error />
+    <x-response.success />
     <section class="page-section page-padding public-section">
         <div class="section-header">
             <p class="bold">Total Jokes: {{$jokes->count()}}</p>

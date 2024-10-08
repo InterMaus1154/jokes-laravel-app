@@ -7,7 +7,11 @@
                 <a href="{{route('user.joke.edit', compact('joke'))}}" class="em-button">Edit Joke</a>
             @endcan
             @can('delete', [\App\Models\Joke::class, $joke])
-                <a href="" class="em-button">Remove Joke</a>
+                <form method="POST" class="secret-form" action="{{route('user.joke.delete', compact('joke'))}}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="em-button">Remove Joke</button>
+                </form>
             @endcan
         </div>
         <span>Joke posted by
