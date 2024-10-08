@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Joke;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreJokeRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreJokeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->user()->can('create', Joke::class);
     }
 
     /**
@@ -22,7 +23,9 @@ class StoreJokeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'joke_question' => 'required|string|max:500',
+            'joke_answer' => 'required|string|max:500',
+            'joke_tags' => 'nullable|array'
         ];
     }
 }

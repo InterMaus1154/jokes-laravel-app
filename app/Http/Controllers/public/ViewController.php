@@ -18,16 +18,16 @@ class ViewController extends Controller
      */
     public function index(Request $request)
     {
-        $jokes = cache()->remember('joke-list', now()->addHours(1), function () use ($request) {
-            return Joke::with('jokeTags.tag:tag_id,tag_name,tag_color', 'user:user_id,username')
+        $jokes =
+            Joke::with('jokeTags.tag:tag_id,tag_name,tag_color', 'user:user_id,username')
                 ->withCount('jokeComments')
                 ->when($request->has('tag'), function ($query) use ($request) {
                     $query->whereHas('jokeTags', function ($builder) use ($request) {
                         $builder->whereTagId($request->get('tag'));
                     });
                 })
+                ->orderBy('created_at', 'desc')
                 ->paginate(Joke::$PAGINATION_COUNT);
-        });
 
 
         return view('public.index', compact('jokes'));

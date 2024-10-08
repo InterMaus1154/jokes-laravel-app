@@ -159,4 +159,8 @@ table th, table td{
 .tag-wrapper .tag-input-holder{
     display: flex;
     gap: .25rem;
+
+    label, input{
+        cursor: pointer;
+    }
 }
