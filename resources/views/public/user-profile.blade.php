@@ -1,6 +1,12 @@
 {{--profile details about an user--}}
 @php
-    use Carbon\Carbon;
+    /**
+     * @var $user
+     */
+        use Carbon\Carbon;
+
+        //check if the user is viewing their own profile
+        $isUserViewingOwn = auth()->check() && auth()->user()->user_id === $user->user_id;
 @endphp
 <x-general.layout title="LaughLab - {{$user->username}}'s profile">
     <section class="user-profile-section page-section page-padding">
@@ -14,7 +20,7 @@
         <x-response.success/>
         <x-response.error/>
         <div class="profile-details">
-            @if(auth()->check() && auth()->user()->user_id === $user->user_id)
+            @if($isUserViewingOwn)
                 <div class="profile-detail">
                     <p class="profile-detail-title">Username:</p>
                     <div class="profile-detail-content">
@@ -22,7 +28,7 @@
                     </div>
                 </div>
                 <div class="profile-detail">
-                    <p class="profile-detail-title">Email: </p>
+                    <p class="profile-detail-title">Email:</p>
                     <div class="profile-detail-content">{{$user->email}}</div>
                 </div>
                 <div class="profile-detail">
@@ -83,7 +89,13 @@
                 <div class="profile-detail-content">{{$user->tags_count}}</div>
             </div>
         </div>
-        <h2>Jokes posted by {{$user->username}}</h2>
+        <h2>
+            @if($isUserViewingOwn)
+                Your jokes
+            @else
+                Jokes posted by {{$user->username}}
+            @endif
+        </h2>
         {{$jokes->links('vendor.pagination.default')}}
         <div class="jokes-section">
             @each('joke.joke-box', $jokes, 'joke', 'joke.joke-empty')
