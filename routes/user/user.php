@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\user\JokeController as UserJokeController;
 use App\Http\Controllers\user\TagController as UserTagController;
+use App\Http\Controllers\user\UserController as UserUserController;
 
 /*Joke prefixed routes, with joke controller*/
 Route::prefix('joke')
@@ -33,3 +34,16 @@ Route::prefix('tag')
         /*Store new tag*/
         Route::post('store', 'store')->name('user.tag.store');
     });
+
+/*Routes related to user, prefixed with profile*/
+Route::prefix('profile')
+    ->controller(UserUserController::class)
+    ->group(function(){
+        /*Edit user's own password view*/
+        Route::get('password/edit', 'changePasswordView')->name('user.password.edit');
+
+        /*Update password*/
+        Route::patch('password/update', 'updatePassword')->name('user.password.update');
+
+    });
+

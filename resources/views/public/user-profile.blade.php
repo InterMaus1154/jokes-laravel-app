@@ -16,10 +16,18 @@
         <div class="profile-details">
             @if(auth()->check() && auth()->user()->user_id === $user->user_id)
                 <div class="profile-detail">
-                    <div class="profile-detail-title">Username:</div>
+                    <p class="profile-detail-title">Username:</p>
                     <div class="profile-detail-content">
                         {{$user->username}}
                     </div>
+                </div>
+                <div class="profile-detail">
+                    <p class="profile-detail-title">Email: </p>
+                    <div class="profile-detail-content">{{$user->email}}</div>
+                </div>
+                <div class="profile-detail">
+                    <p class="profile-detail-title">Password:</p>
+                    <a class="profile-detail-content" href="{{route('user.password.edit')}}">Change Password</a>
                 </div>
             @endif
             <div class="profile-detail">
