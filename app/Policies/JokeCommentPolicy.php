@@ -29,7 +29,7 @@ class JokeCommentPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return !$user->is_restricted;
     }
 
     /**

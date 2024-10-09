@@ -1,1 +1,1 @@
-<h2>No jokes based on your filter :(</h2>
+<h2 class="italic">No jokes based on your filter :(</h2>

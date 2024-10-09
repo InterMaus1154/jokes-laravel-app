@@ -36,7 +36,7 @@
     text-align: center;
 }
 
-.form-wrapper form{
+form{
     display: flex;
     flex-direction: column;
     gap: 1.125rem;
@@ -71,10 +71,10 @@
     outline: 3px solid var(--error-red, red);
 }
 
-.input-wrapper:has(input[required]) label::before{
+.input-wrapper:has([required]) label::before{
     content: '*';
     position: absolute;
-    left: -2.5%;
+    left: -5px;
     width: 25px;
     height: 25px;
     color: var(--error-red, red);
@@ -162,5 +162,19 @@ table th, table td{
 
     label, input{
         cursor: pointer;
+    }
+}
+
+.add-comment-section{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    border: 1px solid var(--txt-dark);
+    padding: 1rem;
+    border-radius: .25rem;
+
+    textarea{
+        resize: none;
     }
 }

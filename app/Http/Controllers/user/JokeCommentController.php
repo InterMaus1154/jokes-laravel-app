@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\user;
 
-use App\Models\JokeComment;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreJokeCommentRequest;
 use App\Http\Requests\UpdateJokeCommentRequest;
+use App\Models\Joke;
+use App\Models\JokeComment;
+use App\Models\User;
 
 class JokeCommentController extends Controller
 {
@@ -27,9 +30,12 @@ class JokeCommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreJokeCommentRequest $request)
+    public function store(StoreJokeCommentRequest $request, Joke $joke)
     {
-        //
+        $this->authorize('create', [User::class]);
+
+        $user = auth()->user();
+
     }
 
     /**

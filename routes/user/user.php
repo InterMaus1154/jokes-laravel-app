@@ -3,6 +3,7 @@
 use App\Http\Controllers\user\JokeController as UserJokeController;
 use App\Http\Controllers\user\TagController as UserTagController;
 use App\Http\Controllers\user\UserController as UserUserController;
+use App\Http\Controllers\user\JokeCommentController as UserJokeCommentController;
 
 /*Joke prefixed routes, with joke controller*/
 Route::prefix('joke')
@@ -44,6 +45,12 @@ Route::prefix('profile')
 
         /*Update password*/
         Route::patch('password/update', 'updatePassword')->name('user.password.update');
-
     });
 
+/*Routes related to commenting, prefixed with comment*/
+Route::prefix('comment')
+    ->controller(UserJokeCommentController::class)
+    ->group(function(){
+       /*Create a new comment*/
+       Route::post('joke/{joke}', 'store')->name('user.comment.store');
+    });
