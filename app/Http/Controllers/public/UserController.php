@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $user = $user->loadCount('jokes', 'jokeComments', 'tags', 'jokes');
+        $user = $user->loadCount('jokes', 'jokeComments', 'tags', 'jokes')->load('jokes');
         $jokes = $user->jokes()->orderBy('created_at', 'desc')->paginate(Joke::$PAGINATION_COUNT);
         return view('public.user-profile', compact('user', 'jokes'));
     }

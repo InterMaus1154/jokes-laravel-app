@@ -17,7 +17,9 @@ class JokeController extends Controller
      */
     public function show(Joke $joke)
     {
-        $joke->loadCount('jokeComments')->load('jokeTags.tag');
+        $joke->loadCount('jokeComments')->load(['jokeTags.tag', 'jokeComments' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }]);
         return view('joke.joke-page', compact('joke'));
     }
 
