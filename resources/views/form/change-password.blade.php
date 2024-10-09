@@ -10,15 +10,15 @@
                 @method('PATCH')
                 <div class="input-wrapper">
                     <label for="old_password">Old password: </label>
-                    <input type="password" id="old_password" name="old_password" required>
+                    <input type="password" id="old_password" placeholder="Old password" name="old_password" required>
                 </div>
                 <div class="input-wrapper">
                     <label for="new_password">New Password: </label>
-                    <input type="password" id="new_password" name="new_password" required>
+                    <input type="password" id="new_password" placeholder="New password" name="new_password" required minlength="8">
                 </div>
                 <div class="input-wrapper">
                     <label for="new_password_confirmation">New Password Repeat:</label>
-                    <input type="password" id="new_password_confirmation" name="new_password_confirmation" required>
+                    <input type="password" id="new_password_confirmation" name="new_password_confirmation" placeholder="Repeat new password" required minlength="8">
                 </div>
                 <input type="submit" value="Update" class="submit-button">
             </form>
