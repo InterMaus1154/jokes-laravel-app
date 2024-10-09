@@ -6,7 +6,7 @@
             <h2>Add a new comment</h2>
             <x-response.success />
             <x-response.error />
-            <form method="POST" >
+            <form method="POST" action="{{route('user.comment.store', compact('joke'))}}">
                 @csrf
                 @method('POST')
                 <div class="input-wrapper">

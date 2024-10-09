@@ -22,7 +22,7 @@ class StoreJokeCommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'comment' => 'required|string|max:65000'
+            'comment_content' => 'required|string|max:65000'
         ];
     }
 }

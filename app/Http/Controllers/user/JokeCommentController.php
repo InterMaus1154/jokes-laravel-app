@@ -32,10 +32,21 @@ class JokeCommentController extends Controller
      */
     public function store(StoreJokeCommentRequest $request, Joke $joke)
     {
-        $this->authorize('create', [User::class]);
+        $this->authorize('create', [JokeComment::class]);
 
         $user = auth()->user();
 
+        $jokeComment = JokeComment::create([
+            'user_id' => $user->user_id,
+            'joke_id' => $joke->joke_id,
+            'comment_content' => $request->validated('comment_content')
+        ]);
+
+        if($jokeComment){
+            return redirect()->back()->with('success', 'Successfully commented!');
+        }
+
+        return redirect()->back()->withErrors(['error' => 'Error at creating comment']);
     }
 
     /**
